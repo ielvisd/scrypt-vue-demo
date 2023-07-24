@@ -5,10 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build:contract": "npx scrypt-cli compile",
+    "deploy:contract": "npx ts-node --project tsconfig-scryptTS.json ./scripts/deploy.ts",
+    "verify:contract": "npx scrypt-cli verify $(cat .scriptHash) ./src/contracts/powcanoScrypt.ts",
+    "genprivkey": "npx ts-node --project tsconfig-scryptTS.json ./scripts/privateKey.ts"
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "scrypt-ts": "^1.0.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
@@ -25,6 +31,6 @@
     "eslint-plugin-vue": "^8.0.3",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
-    "typescript": "~4.5.5"
+    "typescript": "^5.1.6"
   }
 }
